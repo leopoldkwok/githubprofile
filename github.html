@@ -1,51 +1,69 @@
-<!doctype html>
-<html lang='en'>
+<html>
   <head>
     <title>Github profiles</title>
     <link href='github.css' rel='stylesheet'>
     <meta charset='utf8'>
   </head>
   <body>
-    <form id='add-profile'>
+    <div id="wrapper">
+    <form id='add_profile'>
       <input id='username' placeholder='Enter a Github username'>
       <button type='submit'>Load profile</button>
     </form>
 
-    <main class="profile-container">
-      <article class="profile">
-        <section class="pic">
-          <img src="https://avatars.githubusercontent.com/u/5008648?">
-        </section>
+    <div class='profile-container'>
 
-        <section class="statistics">
+    </div>
+
+    <template id='profile_template'>
+      <div class="profile">
+        <div class="left">
+          <img src="{{ avatar_url }}">
+        </div>
+
+        <div class="right">
           <h3>
-            <a href="https://github.com/alexmakers">
-              alexmakers
-            </a>
+            <a href="{{ html_url }}">{{ login }}</a>
           </h3>
-          <strong>Repos: 35</strong>
-          <strong>Followers: 49</strong>
-        </section>
+          <h4>Repos - {{ public_repos }}</h4>
+          <h4>Followers - {{ followers }}</h4>
+        </div>
+        <a href='#' class='close_button'>✖</a>
         <br clear="all">
-      </article>
-    </main>
-
-    <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+      </div>
+    </template>
+    </div>  <!-- end of wrapper -->
+    <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src='mustache.js'></script>
     <script>
-      $(document).ready(function(){
-        $('#add-profile').on('submit', function(e){
-          e.preventDefault();
-          var url = 'https://api.github.com/users/' + $('#username').val() + '?access_token=73cb7811fcc34c769d0585da0f8f50d8bb0f61bc';
+      function fetchUser(username) {
+          var url = 'https://api.github.com/users/' + username
 
-          var userData = $.get(url, function(user) {            
-            $('<article class="profile"><section class="pic"><img src="' + user.avatar_url + '"></section><section class="statistics"><h3><a href="https://github.com/' + user.login + '">' + user.login + '</a></h3><strong>Repos: ' + user.public_repos + '</strong><strong>Followers: ' + user.followers + '</strong></section><br clear="all"></article>').appendTo('.profile-container');
+          $.get(url, function(user){
+            var newProfile = Mustache.render($('#profile_template').html(), user);
+
+            $(newProfile).prependTo('.profile-container').slideDown();
           }).fail(function(){
-            alert('Could not find this user.');
-          }).always(function() {
+            alert('Could not find the user called ' + $('#username').val());
+          }).always(function(){
             $('#username').val('');
           })
+      }
+
+      $(document).ready(function(){
+
+        $('#add_profile').on('submit', function(event){
+          event.preventDefault();
+          fetchUser($('#username').val())
+        });
+
+        $('.profile-container').on('click', '.close_button', function(event) {
+          event.preventDefault();
+          $(this).closest('.profile').slideUp(function(){
+            $(this).remove();
+          })
         })
-      })
+      });
     </script>
   </body>
 </html>

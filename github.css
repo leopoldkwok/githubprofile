@@ -1,10 +1,16 @@
 input, button {
-  font-size: 20px;
+  font-size: 17px;
   padding: 5px;
 }
 
 input {
   width: 510px;
+}
+
+
+#wrapper {
+  width: 50%;
+  margin: 20px auto;
 }
 
 .profile {
@@ -14,39 +20,44 @@ input {
   background: -webkit-linear-gradient(top,  #606c88 0%,#3f4c6b 100%); /* Chrome10+,Safari5.1+ */
   background: -o-linear-gradient(top,  #606c88 0%,#3f4c6b 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top,  #606c88 0%,#3f4c6b 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #606c88 0%,#3f4c6b 100%); /* W3C */
+  background: black; /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
   width: 600px;
   padding: 20px 20px 10px 20px;
   font-family: Helvetica Neue;
   border-radius: 15px;
   color: #fff;
+  margin: auto;
   margin-bottom: 20px;
+  position: relative;
+  display: none;
 }
 
 .profile a {
   color: #fff;
 }
 
-.profile .pic {
+.close_button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.profile .left {
   width: 110px;
   float: left;
 }
 
-.profile .statistics {
+.profile .right {
   width: 450px;
   float: left;
   padding: 0 20px;
 }
 
-.profile .statistics h3 {
+.profile .right h3 {
   margin-top: 0;
-}
-
-.profile .statistics strong {
-  margin-top: 10px;
-  font-size: 18px;
-  display: block;
 }
 .profile img {
   width: 100%;
