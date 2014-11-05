@@ -38,6 +38,3 @@ Open the github.html file in a browser:
 ```shell
 $ open github.html
 ```
-Type a github profile name in the search box and click on "load profile"  
-
-See the github profile details pop on your screen.
