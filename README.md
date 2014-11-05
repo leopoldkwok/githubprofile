@@ -17,13 +17,6 @@ Technologies used:
 * MustacheJS
 * AJAX
 
-###Using the app
-
-* Download or clone the appliation
-* Open github.html in your favourite web browser
-* Type a github profile name in the search box and click on "load profile"
-* See the github profile details pop on your screen.
-
 How to use
 -----------
 
@@ -40,8 +33,11 @@ Change directory:
 $ cd githubprofile
 ```
 
-Open the github.html file:
+Open the github.html file in a browser:
 
 ```shell
 $ open github.html
 ```
+Type a github profile name in the search box and click on "load profile"  
+
+See the github profile details pop on your screen.
