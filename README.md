@@ -6,7 +6,7 @@ This project is about pulling information from a user's GitHub account - the num
 Learnings:
 ----------
 
-* understand the use of JSON, and mustache.js in the context of web development
+* Understanding the use of JSON, and mustache.js in the context of web development
 
 Technologies used:
 ------------------
