@@ -1,4 +1,4 @@
-GitHub Profiles
+GitHub Profiles 
 ===============
 
 This project is about pulling information from a user's GitHub account - the number of followers and following the user has. 
